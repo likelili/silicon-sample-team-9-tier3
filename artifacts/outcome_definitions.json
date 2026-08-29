@@ -1,0 +1,262 @@
+{
+ "source_of_record": {
+  "recodes_and_composites": "silicon-sample-submission/scripts/lib/clean_lib.R",
+  "outcome_list_scales_moderators": "silicon-sample-submission/scripts/lib/submission_spec.R",
+  "declared_value_ranges": "silicon-sample-submission/scripts/lib/check_lib.R",
+  "upstream": "the repo states these reproduce data/cleaning.qmd :: clean_common"
+ },
+ "n_conditions": 17,
+ "n_outcomes": 13,
+ "n_targets": 221,
+ "pooled_control": "the three control texts (neckties / baseball / dances) map to the single condition 'control' via submission_spec.R codenames; each twin contributes exactly one control session",
+ "missing_value_rule": "composites use rowMeans(na.rm = TRUE) — the mean of the items present; NaN only when every item is missing",
+ "outcomes": {
+  "trust_multidimensional": {
+   "kind": "composite",
+   "range": [
+    0.0,
+    100.0
+   ],
+   "n_source_items": 12,
+   "source_items": [
+    "trust_competence_1",
+    "trust_competence_2",
+    "trust_competence_3",
+    "trust_integrity_1",
+    "trust_integrity_2",
+    "trust_integrity_3",
+    "trust_benevolence_1",
+    "trust_benevolence_2",
+    "trust_benevolence_3",
+    "trust_openness_1",
+    "trust_openness_2",
+    "trust_openness_3"
+   ],
+   "formula": "mean(mean(trust_competence_1..3), mean(trust_integrity_1..3), mean(trust_benevolence_1..3), mean(trust_openness_1..3))",
+   "source_file_line": "clean_lib.R:222-228"
+  },
+  "trust_post": {
+   "kind": "single_item",
+   "range": [
+    0.0,
+    100.0
+   ],
+   "n_source_items": 1,
+   "source_items": [
+    "trust_post"
+   ],
+   "formula": "trust_post_1 (renamed)",
+   "source_file_line": "clean_lib.R:.rename_map"
+  },
+  "distrust_post": {
+   "kind": "single_item",
+   "range": [
+    0.0,
+    100.0
+   ],
+   "n_source_items": 1,
+   "source_items": [
+    "distrust_post"
+   ],
+   "formula": "distrust_1 (renamed)",
+   "source_file_line": "clean_lib.R:.rename_map"
+  },
+  "funding_perceptions": {
+   "kind": "single_item_reversed",
+   "range": [
+    0.0,
+    100.0
+   ],
+   "n_source_items": 1,
+   "source_items": [
+    "funding_perceptions"
+   ],
+   "formula": "100 - funding_5",
+   "source_file_line": "clean_lib.R:218"
+  },
+  "policy_role_mean": {
+   "kind": "composite",
+   "range": [
+    0.0,
+    100.0
+   ],
+   "n_source_items": 4,
+   "source_items": [
+    "policy_role_1",
+    "policy_role_2",
+    "policy_role_3",
+    "policy_role_4"
+   ],
+   "formula": "mean(policy_role_1..4)",
+   "source_file_line": "clean_lib.R:229"
+  },
+  "inst_trust_mean": {
+   "kind": "composite",
+   "range": [
+    0.0,
+    100.0
+   ],
+   "n_source_items": 5,
+   "source_items": [
+    "inst_trust_epa",
+    "inst_trust_nasa",
+    "inst_trust_noaa",
+    "inst_trust_universities",
+    "inst_trust_federal_gov"
+   ],
+   "formula": "mean(inst_trust_epa, nasa, noaa, universities, federal_gov)",
+   "source_file_line": "clean_lib.R:230-231"
+  },
+  "belief_post": {
+   "kind": "single_item",
+   "range": [
+    0.0,
+    100.0
+   ],
+   "n_source_items": 1,
+   "source_items": [
+    "belief_post"
+   ],
+   "formula": "belief_post_1 (renamed)",
+   "source_file_line": "clean_lib.R:.rename_map"
+  },
+  "concern_mean": {
+   "kind": "composite",
+   "range": [
+    0.0,
+    100.0
+   ],
+   "n_source_items": 3,
+   "source_items": [
+    "concern_1",
+    "concern_2",
+    "concern_3"
+   ],
+   "formula": "mean(concern_1..3)",
+   "source_file_line": "clean_lib.R:232"
+  },
+  "policy_general": {
+   "kind": "single_item",
+   "range": [
+    0.0,
+    100.0
+   ],
+   "n_source_items": 1,
+   "source_items": [
+    "policy_general"
+   ],
+   "formula": "policy_general_1 (renamed)",
+   "source_file_line": "clean_lib.R:.rename_map"
+  },
+  "policy_specific_mean": {
+   "kind": "composite",
+   "range": [
+    0.0,
+    100.0
+   ],
+   "n_source_items": 7,
+   "source_items": [
+    "policy_specific_1",
+    "policy_specific_2",
+    "policy_specific_3",
+    "policy_specific_4",
+    "policy_specific_5",
+    "policy_specific_6",
+    "policy_specific_7"
+   ],
+   "formula": "mean(policy_specific_1..7)",
+   "source_file_line": "clean_lib.R:233"
+  },
+  "behavior_mean": {
+   "kind": "composite",
+   "range": [
+    0.0,
+    100.0
+   ],
+   "n_source_items": 6,
+   "source_items": [
+    "behavior_meat",
+    "behavior_transport",
+    "behavior_solar",
+    "behavior_fly",
+    "behavior_talk",
+    "behavior_donate"
+   ],
+   "formula": "mean(behavior_meat, transport, solar, fly, talk, donate)",
+   "source_file_line": "clean_lib.R:234-235"
+  },
+  "donation_ams": {
+   "kind": "single_item",
+   "range": [
+    0.0,
+    10.0
+   ],
+   "n_source_items": 1,
+   "source_items": [
+    "donation_ams"
+   ],
+   "formula": "as.numeric(donation)",
+   "source_file_line": "clean_lib.R:217"
+  },
+  "newsletter_signup": {
+   "kind": "binary",
+   "range": [
+    0.0,
+    1.0
+   ],
+   "n_source_items": 1,
+   "source_items": [
+    "newsletter_signup"
+   ],
+   "formula": "1 if value in {1,'yes','true'}; 0 if in {0,2,'no','false'}; else NA",
+   "source_file_line": "clean_lib.R:.to_binary (131-140)"
+  }
+ },
+ "raw_item_count": 44,
+ "rename_map": {
+  "trust_competent_1": "trust_competence_1",
+  "trust_intelligent_1": "trust_competence_2",
+  "trust_qualified_1": "trust_competence_3",
+  "trust_honest_1": "trust_integrity_1",
+  "trust_ethical_1": "trust_integrity_2",
+  "trust_sincere_1": "trust_integrity_3",
+  "trust_concerned_1": "trust_benevolence_1",
+  "trust_improve_1": "trust_benevolence_2",
+  "trust_considerate_1": "trust_benevolence_3",
+  "trust_feedback_1": "trust_openness_1",
+  "trust_transparent_1": "trust_openness_2",
+  "trust_attention_1": "trust_openness_3",
+  "trust_post_1": "trust_post",
+  "distrust_1": "distrust_post",
+  "donation": "donation_ams",
+  "newsletter": "newsletter_signup",
+  "funding_5": "funding_perceptions",
+  "policy_1_1": "policy_role_1",
+  "policy_2_1": "policy_role_2",
+  "policy_3_1": "policy_role_3",
+  "policy_4_1": "policy_role_4",
+  "inst_trust_epa_1": "inst_trust_epa",
+  "inst_trust_nasa_1": "inst_trust_nasa",
+  "inst_trust_noaa_1": "inst_trust_noaa",
+  "inst_trust_uni_1": "inst_trust_universities",
+  "inst_trust_gov_1": "inst_trust_federal_gov",
+  "belief_post_1": "belief_post",
+  "concern_1_1": "concern_1",
+  "concern_2_1": "concern_2",
+  "concern_3_1": "concern_3",
+  "policy_general_1": "policy_general",
+  "policy_specific_1_1": "policy_specific_1",
+  "policy_specific_2_1": "policy_specific_2",
+  "policy_specific_3_1": "policy_specific_3",
+  "policy_specific_4_1": "policy_specific_4",
+  "policy_specific_5_1": "policy_specific_5",
+  "policy_specific_6_1": "policy_specific_6",
+  "policy_specific_7_1": "policy_specific_7",
+  "individual_meat_1": "behavior_meat",
+  "individual_transport_1": "behavior_transport",
+  "individual_solar_1": "behavior_solar",
+  "individual_fly_1": "behavior_fly",
+  "individual_talk_1": "behavior_talk",
+  "individual_donate_1": "behavior_donate"
+ }
+}

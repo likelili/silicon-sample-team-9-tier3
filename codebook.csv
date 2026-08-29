@@ -1,0 +1,64 @@
+section,qualtrics_label,target_label,question_text,response_options
+A. Measured items,gender,gender,Gender,"Exact submission levels: Male | Female | Other (raw Qualtrics codes 1 | 2 | 3)"
+A. Measured items,year_birth,year_birth,Year of birth (used to derive age and age_band),Free numeric
+A. Measured items,race,race,Race / ethnicity,"Exact submission levels: White / Caucasian | Black / African American | Hispanic / Latino | Asian / Asian American | Other (raw Qualtrics codes 1–5; the survey's on-screen labels hyphenate slightly differently — clean.R accepts both, but score files must carry these exact strings)"
+A. Measured items,education,education,Highest level of education completed,"Exact submission levels: Less than high school | High school diploma / GED | Some college or Associate's degree | Bachelor's degree | Master's degree / Professional degree | Doctorate degree / Ph.D. (raw Qualtrics codes 1–6)"
+A. Measured items,income,income,Household income,"Exact submission levels: Less than $30,000 | $30,000 to $55,999 | $56,000 to $99,999 | $100,000 to $167,999 | $168,000 or more (raw Qualtrics codes 1–5)"
+A. Measured items,party,party,Partisan identity,"Exact submission levels: Republican | Democrat | Independent | Other (raw EXPORTED Qualtrics codes: 1=Republican, 2=Democrat, 3=Independent, 4=Other — the on-screen choice order is Rep/Ind/Dem/Other, but Qualtrics recodes on export)"
+A. Measured items,trust_competent_1,trust_competence_1,How incompetent or competent are most climate scientists?,0 = Very incompetent … 100 = Very competent
+A. Measured items,trust_intelligent_1,trust_competence_2,How unintelligent or intelligent are most climate scientists?,0 = Very unintelligent … 100 = Very intelligent
+A. Measured items,trust_qualified_1,trust_competence_3,How unqualified or qualified are most climate scientists?,0 = Very unqualified … 100 = Very qualified
+A. Measured items,trust_honest_1,trust_integrity_1,How dishonest or honest are most climate scientists?,0 = Very dishonest … 100 = Very honest
+A. Measured items,trust_ethical_1,trust_integrity_2,How unethical or ethical are most climate scientists?,0 = Very unethical … 100 = Very ethical
+A. Measured items,trust_sincere_1,trust_integrity_3,How insincere or sincere are most climate scientists?,0 = Very insincere … 100 = Very sincere
+A. Measured items,trust_concerned_1,trust_benevolence_1,How unconcerned or concerned are most climate scientists about people’s wellbeing?,0 = Very unconcerned … 100 = Very concerned
+A. Measured items,trust_improve_1,trust_benevolence_2,How uneager or eager are most climate scientists to improve others’ lives?,0 = Very uneager … 100 = Very eager
+A. Measured items,trust_considerate_1,trust_benevolence_3,How inconsiderate or considerate are most climate scientists of others’ interests?,0 = Very inconsiderate … 100 = Very considerate
+A. Measured items,trust_feedback_1,trust_openness_1,"How open, if at all, are most climate scientists to feedback?",0 = Not open at all … 100 = Very open
+A. Measured items,trust_transparent_1,trust_openness_2,How unwilling or willing are most climate scientists to be transparent?,0 = Very unwilling … 100 = Very willing
+A. Measured items,trust_attention_1,trust_openness_3,How much or how little attention do climate scientists pay to other people's views?,0 = Very little attention … 100 = A great deal of attention
+A. Measured items,trust_post_1,trust_post,How much do you trust climate scientists?,0 = not at all … 100 = very strongly
+A. Measured items,distrust_1,distrust_post,How much do you distrust climate scientists?,0 = not at all … 100 = very strongly
+A. Measured items,funding_5,funding_perceptions,"Do you think the federal government is spending too much, too little or about the right amount of money on climate change research? (reverse-coded in cleaning)","0 = far too little, 50 = about right, 100 = far too much"
+A. Measured items,belief_post_1,belief_post,"How accurate do you think this statement is? ""Human activities are causing climate change.""",0 = not at all accurate … 100 = extremely accurate
+A. Measured items,policy_general_1,policy_general,"How much do you oppose or support: ""The U.S. government should do more to reduce global warming""",0 = Strongly oppose … 100 = Strongly support
+A. Measured items,donation,donation_ams,"Of the $10 bonus, how much would you like to donate to the American Meteorological Society (AMS)?","$0–$10 in whole-dollar choices ($1 increments; integers only). All 0–100 slider items are also integers."
+A. Measured items,newsletter,newsletter_signup,"Did you subscribe to the ""Talking Climate"" newsletter on the previous page? (recoded 1/0 in cleaning)","Raw Qualtrics: 1 = Yes, 2 = No (recoded to 1/0 in cleaning). Refers to an earlier newsletter-offer page; see questionnaire.txt for the cross-page dependency."
+A. Measured items,inst_trust_epa_1,inst_trust_epa,How much do you trust the following institutions? — Environmental Protection Agency (EPA),0 = not at all … 100 = very strongly
+A. Measured items,inst_trust_nasa_1,inst_trust_nasa,How much do you trust the following institutions? — National Aeronautics and Space Administration (NASA),0 = not at all … 100 = very strongly
+A. Measured items,inst_trust_noaa_1,inst_trust_noaa,How much do you trust the following institutions? — National Oceanic and Atmospheric Administration (NOAA),0 = not at all … 100 = very strongly
+A. Measured items,inst_trust_uni_1,inst_trust_universities,How much do you trust the following institutions? — Universities and colleges,0 = not at all … 100 = very strongly
+A. Measured items,inst_trust_gov_1,inst_trust_federal_gov,How much do you trust the following institutions? — Federal government,0 = not at all … 100 = very strongly
+A. Measured items,policy_1_1,policy_role_1,To what extent do you agree or disagree: — Climate scientists should work closely with policy makers to integrate scientific results into policy-making.,0 = Strongly disagree … 100 = Strongly agree
+A. Measured items,policy_2_1,policy_role_2,To what extent do you agree or disagree: — Climate scientists should actively advocate for specific policies.,0 = Strongly disagree … 100 = Strongly agree
+A. Measured items,policy_3_1,policy_role_3,To what extent do you agree or disagree: — Climate scientists should communicate their findings to policy makers.,0 = Strongly disagree … 100 = Strongly agree
+A. Measured items,policy_4_1,policy_role_4,To what extent do you agree or disagree: — Climate scientists should be more involved in the policy-making process.,0 = Strongly disagree … 100 = Strongly agree
+A. Measured items,concern_1_1,concern_1,How concerned are you about climate change?,0 = Not at all … 100 = Extremely
+A. Measured items,concern_2_1,concern_2,How serious a problem is climate change?,0 = Not at all … 100 = Extremely
+A. Measured items,concern_3_1,concern_3,"Relative to other issues facing the U.S., how important is climate change?",0 = The least important issue … 100 = The most important issue
+A. Measured items,policy_specific_1_1,policy_specific_1,"How much do you support or oppose: — Raising taxes on fossil fuels (e.g., gas, oil, coal)",0 = Strongly oppose … 100 = Strongly support
+A. Measured items,policy_specific_2_1,policy_specific_2,How much do you support or oppose: — Expanding infrastructure for public transportation,0 = Strongly oppose … 100 = Strongly support
+A. Measured items,policy_specific_3_1,policy_specific_3,How much do you support or oppose: — Increasing the use of sustainable energy such as wind and solar energy,0 = Strongly oppose … 100 = Strongly support
+A. Measured items,policy_specific_4_1,policy_specific_4,How much do you support or oppose: — Protecting forested and land areas,0 = Strongly oppose … 100 = Strongly support
+A. Measured items,policy_specific_5_1,policy_specific_5,"How much do you support or oppose: — Increasing taxes on carbon-intensive foods (e.g., beef and dairy products)",0 = Strongly oppose … 100 = Strongly support
+A. Measured items,policy_specific_6_1,policy_specific_6,How much do you support or oppose: — Investing more in green jobs and businesses,0 = Strongly oppose … 100 = Strongly support
+A. Measured items,policy_specific_7_1,policy_specific_7,How much do you support or oppose: — Introducing laws to keep waterways and oceans clean,0 = Strongly oppose … 100 = Strongly support
+A. Measured items,individual_meat_1,behavior_meat,How likely are you to engage in the following in the next 12 months? — Eat less meat,0 = Not likely at all … 100 = Extremely likely
+A. Measured items,individual_transport_1,behavior_transport,"How likely are you to engage in the following in the next 12 months? — Walk, bicycle, carpool, or take public transportation more often instead of driving by yourself",0 = Not likely at all … 100 = Extremely likely
+A. Measured items,individual_solar_1,behavior_solar,How likely are you to engage in the following in the next 12 months? — Install a solar panel,0 = Not likely at all … 100 = Extremely likely
+A. Measured items,individual_fly_1,behavior_fly,How likely are you to engage in the following in the next 12 months? — Go on less personal (non-business) air travel,0 = Not likely at all … 100 = Extremely likely
+A. Measured items,individual_talk_1,behavior_talk,How likely are you to engage in the following in the next 12 months? — Talk to friends and family about the importance of climate change,0 = Not likely at all … 100 = Extremely likely
+A. Measured items,individual_donate_1,behavior_donate,How likely are you to engage in the following in the next 12 months? — Donate to an environmental NGO,0 = Not likely at all … 100 = Extremely likely
+B. Constructed during cleaning,NA,age_band,"Age band, cut from age = 2026 − year_birth","Exact submission levels: 18-29 | 30-44 | 45-59 | 60+"
+B. Constructed during cleaning,NA,funding_perceptions,Reverse of funding_5: 100 − funding_5 (higher = perceives funding too low / supports more funding),Slider 0–100
+B. Constructed during cleaning,NA,newsletter_signup,"Recode of newsletter: Yes→1, No→0",0 / 1
+B. Constructed during cleaning,NA,trust_competence,Mean of trust_competence_1..3,Slider 0–100
+B. Constructed during cleaning,NA,trust_integrity,Mean of trust_integrity_1..3,Slider 0–100
+B. Constructed during cleaning,NA,trust_benevolence,Mean of trust_benevolence_1..3,Slider 0–100
+B. Constructed during cleaning,NA,trust_openness,Mean of trust_openness_1..3,Slider 0–100
+B. Constructed during cleaning,NA,trust_multidimensional,"PRIMARY OUTCOME. Mean of the four trust subscales (competence, integrity, benevolence, openness)",Slider 0–100
+B. Constructed during cleaning,NA,policy_role_mean,Mean of policy_role_1..4,Slider 0–100
+B. Constructed during cleaning,NA,inst_trust_mean,Mean of inst_trust_epa/nasa/noaa/universities/federal_gov,Slider 0–100
+B. Constructed during cleaning,NA,concern_mean,Mean of concern_1..3,Slider 0–100
+B. Constructed during cleaning,NA,policy_specific_mean,Mean of policy_specific_1..7,Slider 0–100
+B. Constructed during cleaning,NA,behavior_mean,Mean of behavior_meat/transport/solar/fly/talk/donate,Slider 0–100

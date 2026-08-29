@@ -1,0 +1,62 @@
+{
+  "upload_type": "software",
+  "title": "Silicon Sample Benchmark — Tier 3 (direct effect forecast) submission (team team_9)",
+  "version": "1.0-t3",
+  "language": "eng",
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "creators": [
+    {
+      "name": "Toubia, Olivier",
+      "affiliation": "Columbia Business School"
+    },
+    {
+      "name": "Peng, Tianyi",
+      "affiliation": "Columbia Business School"
+    },
+    {
+      "name": "Gui, George",
+      "affiliation": "Columbia Business School"
+    },
+    {
+      "name": "Qiu, Yuchen",
+      "affiliation": "Columbia Business School"
+    },
+    {
+      "name": "Venkat, Naveen",
+      "affiliation": "Columbia University"
+    }
+  ],
+  "description": "<p>Average treatment-effect predictions computed as intervention-minus-control differences from calibrated Tier-2 digital-twin group means.<\/p>",
+  "keywords": [
+    "Silicon Sample Benchmark",
+    "silicon sampling",
+    "large language models",
+    "computational social science",
+    "survey methodology",
+    "public opinion",
+    "climate communication",
+    "treatment effect prediction"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://janpfander.github.io/llm_predictions_megastudy/",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "publication-other"
+    },
+    {
+      "identifier": "https://janpfander.github.io/llm_predictions_megastudy/amendment_preregistration.html",
+      "relation": "references",
+      "scheme": "url",
+      "resource_type": "publication-preprint"
+    },
+    {
+      "identifier": "https://github.com/likelili/silicon-sample-team-9-tier3",
+      "relation": "isCompiledBy",
+      "scheme": "url",
+      "resource_type": "software"
+    }
+  ],
+  "notes": "Team team_9. Disclosure class B."
+}
