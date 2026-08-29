@@ -5,12 +5,12 @@
  "source": "SYN-DIGITS adaptive transfer; tau = 0.15 as published",
  "refitting": "none — the gate selects between two columns that already exist",
  "inputs": {
-  "silicon_targets_raw.csv": "/Users/yq2411/Desktop/DT_Website/silicon_bench/calib/data/silicon_targets_raw.csv",
-  "silicon_targets_calibrated.csv": "/Users/yq2411/Desktop/DT_Website/silicon_bench/calib/data/silicon_targets_calibrated.csv",
-  "silicon_fit_diagnostics.csv": "/Users/yq2411/Desktop/DT_Website/silicon_bench/calib/data/silicon_fit_diagnostics.csv",
-  "poststratification_weights.csv": "/Users/yq2411/Desktop/DT_Website/silicon_bench/calib/data/poststratification_weights.csv"
+  "silicon_targets_raw.csv": "calib/data/silicon_targets_raw.csv",
+  "silicon_targets_calibrated.csv": "calib/data/silicon_targets_calibrated.csv",
+  "silicon_fit_diagnostics.csv": "calib/data/silicon_fit_diagnostics.csv",
+  "poststratification_weights.csv": "calib/data/poststratification_weights.csv"
  },
- "outputs_dir": "/Users/yq2411/Desktop/DT_Website/silicon_bench/calib/data_tau015",
+ "outputs_dir": "calib/data_tau015",
  "outputs": {
   "silicon_targets_calibrated.csv": "GATED — the only file that differs from calib/data/",
   "silicon_targets_raw.csv": "verbatim copy",
