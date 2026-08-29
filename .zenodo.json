@@ -1,6 +1,6 @@
 {
   "upload_type": "software",
-  "title": "Silicon Sample Benchmark — Tier 3 (direct effect forecast) submission (team team_9)",
+  "title": "Silicon Sample Benchmark — Tier 3 treatment-effect submission (Team 9)",
   "version": "1.0-t3",
   "language": "eng",
   "access_right": "open",
@@ -27,7 +27,7 @@
       "affiliation": "Columbia University"
     }
   ],
-  "description": "<p>Average treatment-effect predictions computed as intervention-minus-control differences from calibrated Tier-2 digital-twin group means.<\/p>",
+  "description": "<p>Average treatment-effect predictions computed as intervention-minus-control differences from calibrated and 40-cell-poststratified Tier-2 digital-twin group means.<\/p>",
   "keywords": [
     "Silicon Sample Benchmark",
     "silicon sampling",

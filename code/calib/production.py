@@ -25,10 +25,11 @@ import numpy as np
 
 from . import authors
 from .common import (CALIB_DATA, STUDY_RUN, anchor_matrices, clean_pool,
-                     demographics, read_csv_dicts, save_json, tier1_ids)
+                     read_csv_dicts, save_json)
 from .outcomes import (CODENAMES, CONDITIONS, MODERATORS, OUTCOMES, RENAME,
                        TARGETS, build_outcomes, to_binary)
 from .published import FIT_PARAMS, SPEC
+from .poststratification import build_weights, weighted_mean
 
 
 def _pipeline_imports():
@@ -202,42 +203,36 @@ def _sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def aggregate(pool: list[str], calibrated: np.ndarray) -> tuple[list[dict], list[dict], list[dict], dict, list[dict]]:
-    """Build the two Tier-2 tables and organizer-specified Tier-3 mean differences."""
-    panel, control_1000 = tier1_ids()
-    demo = demographics(pool)
-    indices = {pid: i for i, pid in enumerate(pool)}
-    panel_idx = np.array([indices[p] for p in sorted(panel, key=lambda x: int(x.split("_")[1]))])
-    control_idx = np.array([indices[p] for p in sorted(control_1000,
-                                                       key=lambda x: int(x.split("_")[1]))])
-    if len(panel_idx) != 500 or len(control_idx) != 1000:
-        raise SystemExit("production: Tier-1 aggregation IDs are not 500/1000")
+def aggregate(pool: list[str], calibrated: np.ndarray):
+    """Build Tier 2/3 using the full clean pool and fixed 40-cell weights."""
+    weights, demo, weight_audit, weight_rows = build_weights(pool)
 
     main = []
     moderator = []
     unsupported_cells = []
     for j, (condition, outcome) in enumerate(TARGETS):
-        vals = calibrated[panel_idx, j]
+        vals = calibrated[:, j]
+        condition_mean = weighted_mean(vals, weights)
         main.append({"condition": condition, "outcome": outcome,
-                     "mean": format(float(vals.mean()), ".15g")})
+                     "mean": format(condition_mean, ".15g")})
         for mod, levels in MODERATORS.items():
             for level in levels:
-                cell = np.array([i for i in panel_idx
-                                 if demo[pool[int(i)]][mod] == level], dtype=int)
+                cell = np.array([i for i, pid in enumerate(pool)
+                                 if demo[pid][mod] == level], dtype=int)
                 if not len(cell):
                     # Organizer guidance: when a demographic level has no
                     # observations, repeat the condition mean as the explicit
                     # no-moderation prediction.  Twin-2K has no respondents in
                     # the benchmark's gender="Other" level; all other 26
                     # moderator levels have support in the frozen panel.
-                    cell_mean = float(vals.mean())
+                    cell_mean = condition_mean
                     unsupported_cells.append({"condition": condition,
                                               "moderator": mod,
                                               "moderator_level": level,
                                               "outcome": outcome,
                                               "rule": "condition mean (no moderation)"})
                 else:
-                    cell_mean = float(calibrated[cell, j].mean())
+                    cell_mean = weighted_mean(calibrated[cell, j], weights[cell])
                 moderator.append({"condition": condition, "moderator": mod,
                                   "moderator_level": level, "outcome": outcome,
                                   "mean": format(cell_mean, ".15g")})
@@ -252,14 +247,10 @@ def aggregate(pool: list[str], calibrated: np.ndarray) -> tuple[list[dict], list
             tier3.append({"condition": condition, "outcome": outcome,
                           "ate": format(ate, ".15g")})
 
-    robustness = {}
-    for outcome in OUTCOMES:
-        j = TARGETS.index(("control", outcome))
-        robustness[outcome] = {
-            "control_panel500": float(calibrated[panel_idx, j].mean()),
-            "control_1000": float(calibrated[control_idx, j].mean()),
-        }
-    return main, moderator, tier3, robustness, unsupported_cells
+    weight_audit["moderator_rule"] = (
+        "restrict the full clean pool to the requested one-way moderator level and "
+        "renormalize the same fixed respondent weights within that subset")
+    return main, moderator, tier3, weight_audit, unsupported_cells, weight_rows
 
 
 def run() -> dict:
@@ -296,15 +287,22 @@ def run() -> dict:
     main_path = CALIB_DATA / "team_9_T2_secondary-1_v1_cells_main.csv"
     mod_path = CALIB_DATA / "team_9_T2_secondary-1_v1_cells_moderator.csv"
     t3_path = CALIB_DATA / "team_9_T3_secondary-1_v1.csv"
+    weights_path = CALIB_DATA / "poststratification_weights.csv"
+    weights_report_path = CALIB_DATA / "poststratification_report.json"
     _write_matrix(raw_path, pool, raw)
     _write_matrix(cal_path, pool, calibrated)
     _write_rows(fits_path, ["condition", "outcome", "train_mse", "n_fit_rows",
                              "raw_mean", "calibrated_mean"], fit_rows)
-    main, moderator, tier3, robustness, unsupported_cells = aggregate(pool, calibrated)
+    main, moderator, tier3, weight_audit, unsupported_cells, weight_rows = aggregate(
+        pool, calibrated)
     _write_rows(main_path, ["condition", "outcome", "mean"], main)
     _write_rows(mod_path, ["condition", "moderator", "moderator_level", "outcome", "mean"],
                 moderator)
     _write_rows(t3_path, ["condition", "outcome", "ate"], tier3)
+    _write_rows(weights_path,
+                ["base_pid", "gender", "age_band", "race", "target_cell_proportion",
+                 "clean_pool_cell_n", "poststratification_weight"], weight_rows)
+    save_json(weight_audit, weights_report_path)
 
     if len(main) != 221 or len(moderator) != 5967 or len(tier3) != 208:
         raise SystemExit("production: output row-count invariant failed")
@@ -315,26 +313,31 @@ def run() -> dict:
         raise SystemExit("production: duplicate/missing Tier-2 moderator cells")
 
     report = {
-        "status": "pass", "method": {**SPEC, "adaptive_gate": None,
+        "status": "pass", "method": {**SPEC, "tau": None,
+                                        "source": "SYN-DIGITS Table 8 elastic-net settings",
+                                        "adaptive_gate": None,
                                         "production_rule": "always calibrate"},
         "fit_pool": {"n": len(pool), "rule": "structurally exact in all 17 conditions"},
         "anchors": {"n": len(anchor_items), "source": "Twin-2K Wave 4"},
         "targets": {"n": len(TARGETS), "conditions": len(CONDITIONS),
                     "outcomes": len(OUTCOMES)},
         "source_audit": source_audit, "tier1_parity": parity,
-        "aggregation": {"main_and_moderators": "frozen Tier-1 panel of 500",
-                        "control_robustness": "nested Tier-1 control sample of 1000",
-                        "tier3": "intervention Tier-2 mean minus pooled-control Tier-2 mean"},
+        "aggregation": {
+            "main": "full 1,921-person clean pool with fixed 40-cell poststratification weights",
+            "moderators": weight_audit["moderator_rule"],
+            "tier3": "poststratified intervention mean minus poststratified pooled-control mean",
+            "poststratification": weight_audit,
+        },
         "row_counts": {"tier2_main": len(main), "tier2_moderator": len(moderator),
                        "tier3": len(tier3)},
-        "control_robustness": robustness,
         "unsupported_moderator_cells": {
             "count": len(unsupported_cells),
             "rule": "organizer-prescribed no-moderation fallback: repeat condition mean",
             "cells": unsupported_cells,
         },
         "files": {str(p.name): _sha256(p) for p in
-                  (raw_path, cal_path, fits_path, main_path, mod_path, t3_path)},
+                  (raw_path, cal_path, fits_path, main_path, mod_path, t3_path,
+                   weights_path, weights_report_path)},
     }
     save_json(report, CALIB_DATA / "production_report.json")
     return report

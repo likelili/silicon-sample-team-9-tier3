@@ -6,34 +6,39 @@
     {
       "name": "Toubia, Olivier",
       "affiliation": "Columbia Business School",
+      "email": "ot2107@gsb.columbia.edu",
       "orcid": ""
     },
     {
       "name": "Peng, Tianyi",
       "affiliation": "Columbia Business School",
+      "email": "tianyi.peng@columbia.edu",
       "orcid": ""
     },
     {
       "name": "Gui, George",
       "affiliation": "Columbia Business School",
+      "email": "zg2467@gsb.columbia.edu",
       "orcid": ""
     },
     {
       "name": "Qiu, Yuchen",
       "affiliation": "Columbia Business School",
+      "email": "yq2411@columbia.edu",
       "orcid": ""
     },
     {
       "name": "Venkat, Naveen",
       "affiliation": "Columbia University",
+      "email": "nv2444@columbia.edu",
       "orcid": ""
     }
   ],
-  "abstract": "Average treatment-effect predictions computed as intervention-minus-control differences from calibrated Tier-2 digital-twin group means.",
+  "abstract": "Average treatment-effect predictions computed as intervention-minus-control differences from calibrated and 40-cell-poststratified digital-twin group means.",
   "license": "CC-BY-4.0",
   "tier": 3,
   "entry": "secondary-1",
-  "approach_family": "mean-difference treatment effects from calibrated digital-twin group means",
+  "approach_family": "mean-difference treatment effects from calibrated and poststratified digital-twin group means",
   "models": [
     "gpt-5.6-luna (OpenAI; reasoning_effort=medium)",
     "SYN-DIGITS elastic net (alpha=0.01; l1_ratio=0.3)"
@@ -46,7 +51,7 @@
   "prediction_files": [
     {
       "file": "predictions/team_9_T3_secondary-1_v1.csv",
-      "sha256": "68a8dba73c29a4c0d9071dc4b3a6c09b3e48bb270f9d156f596b20c6bb96f65f"
+      "sha256": "c66a2a23fa2c9159322d1feecff0afd38ba059ab802593a466fbde9118210021"
     }
   ],
   "coverage": {

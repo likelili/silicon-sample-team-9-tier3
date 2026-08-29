@@ -85,7 +85,7 @@ def run(root: Path | None = None) -> dict:
     if archived_columns != target_columns or matrix_error > 1e-10:
         raise SystemExit(f"calibrated matrix differs: max error {matrix_error}")
 
-    main, moderator, tier3, _, _ = aggregate(pids, calibrated)
+    main, moderator, tier3, _, _, _ = aggregate(pids, calibrated)
     t2_main = root / "predictions" / "team_9_T2_secondary-1_v1_cells_main.csv"
     t2_mod = root / "predictions" / "team_9_T2_secondary-1_v1_cells_moderator.csv"
     t3_file = root / "predictions" / "team_9_T3_secondary-1_v1.csv"

@@ -6,9 +6,9 @@
   "en_l1_ratio": 0.3,
   "imputation_rank": 5,
   "min_col_std": 1.0,
-  "tau": 0.15,
+  "tau": null,
   "donors": "all 123 Wave-4 anchor columns",
-  "source": "SYN-DIGITS Table 8 (Twin-2K-500, new-question column); tau from the paper's adaptive-transfer rule",
+  "source": "SYN-DIGITS Table 8 elastic-net settings",
   "adaptive_gate": null,
   "production_rule": "always calibrate"
  },
@@ -66,68 +66,476 @@
   "examples": []
  },
  "aggregation": {
-  "main_and_moderators": "frozen Tier-1 panel of 500",
-  "control_robustness": "nested Tier-1 control sample of 1000",
-  "tier3": "intervention Tier-2 mean minus pooled-control Tier-2 mean"
+  "main": "full 1,921-person clean pool with fixed 40-cell poststratification weights",
+  "moderators": "restrict the full clean pool to the requested one-way moderator level and renormalize the same fixed respondent weights within that subset",
+  "tier3": "poststratified intervention mean minus poststratified pooled-control mean",
+  "poststratification": {
+   "source": "artifacts/quota_joint_gender_age_race.csv",
+   "source_sha256": "52e3cf40d12d0df52119e403899a42ba00a64910fdd9cb12692d5a34a96e0913",
+   "formula": "target cell proportion / clean-pool cell proportion",
+   "dimensions": [
+    "gender",
+    "age_band",
+    "race"
+   ],
+   "target_cells": 40,
+   "pool_n": 1921,
+   "weight_sum": 1921.0,
+   "weight_mean": 1.0,
+   "weight_min": 0.30947402842208527,
+   "weight_max": 9.791846625539877,
+   "effective_sample_size": 1442.7184204248001,
+   "max_absolute_target_cell_error": 2.7755575615628914e-17,
+   "same_weights_for_all_conditions_and_outcomes": true,
+   "cells": [
+    {
+     "gender": "Female",
+     "age_band": "18-29",
+     "race": "Asian / Asian American",
+     "target_proportion": 0.006833020499061498,
+     "pool_n": 18,
+     "pool_proportion": 0.009370119729307652,
+     "per_person_weight": 0.7292351321498408,
+     "realized_weighted_proportion": 0.006833020499061496,
+     "difference": -2.6020852139652106e-18
+    },
+    {
+     "gender": "Female",
+     "age_band": "18-29",
+     "race": "Black / African American",
+     "target_proportion": 0.014500043500130504,
+     "pool_n": 25,
+     "pool_proportion": 0.013014055179593961,
+     "per_person_weight": 1.1141833425500276,
+     "realized_weighted_proportion": 0.0145000435001305,
+     "difference": -3.469446951953614e-18
+    },
+    {
+     "gender": "Female",
+     "age_band": "18-29",
+     "race": "Hispanic / Latino",
+     "target_proportion": 0.02366707100121301,
+     "pool_n": 20,
+     "pool_proportion": 0.010411244143675169,
+     "per_person_weight": 2.2732221696665094,
+     "realized_weighted_proportion": 0.02366707100121301,
+     "difference": 0.0
+    },
+    {
+     "gender": "Female",
+     "age_band": "18-29",
+     "race": "Other",
+     "target_proportion": 0.003889011667035002,
+     "pool_n": 14,
+     "pool_proportion": 0.007287870900572618,
+     "per_person_weight": 0.5336279580267312,
+     "realized_weighted_proportion": 0.003889011667035,
+     "difference": -1.734723475976807e-18
+    },
+    {
+     "gender": "Female",
+     "age_band": "18-29",
+     "race": "White / Caucasian",
+     "target_proportion": 0.05005615016845052,
+     "pool_n": 97,
+     "pool_proportion": 0.05049453409682457,
+     "per_person_weight": 0.9913181904494168,
+     "realized_weighted_proportion": 0.0500561501684505,
+     "difference": -2.0816681711721685e-17
+    },
+    {
+     "gender": "Female",
+     "age_band": "30-44",
+     "race": "Asian / Asian American",
+     "target_proportion": 0.0108330324990975,
+     "pool_n": 19,
+     "pool_proportion": 0.00989068193649141,
+     "per_person_weight": 1.0952766016192785,
+     "realized_weighted_proportion": 0.010833032499097497,
+     "difference": -3.469446951953614e-18
+    },
+    {
+     "gender": "Female",
+     "age_band": "30-44",
+     "race": "Black / African American",
+     "target_proportion": 0.017444052332157,
+     "pool_n": 26,
+     "pool_proportion": 0.01353461738677772,
+     "per_person_weight": 1.2888470973105228,
+     "realized_weighted_proportion": 0.017444052332156998,
+     "difference": -3.469446951953614e-18
+    },
+    {
+     "gender": "Female",
+     "age_band": "30-44",
+     "race": "Hispanic / Latino",
+     "target_proportion": 0.027778083334250008,
+     "pool_n": 24,
+     "pool_proportion": 0.012493492972410203,
+     "per_person_weight": 2.2234040868789275,
+     "realized_weighted_proportion": 0.027778083334250005,
+     "difference": -3.469446951953614e-18
+    },
+    {
+     "gender": "Female",
+     "age_band": "30-44",
+     "race": "Other",
+     "target_proportion": 0.003944011832035497,
+     "pool_n": 17,
+     "pool_proportion": 0.008849557522123894,
+     "per_person_weight": 0.445673337020011,
+     "realized_weighted_proportion": 0.003944011832035496,
+     "difference": -8.673617379884035e-19
+    },
+    {
+     "gender": "Female",
+     "age_band": "30-44",
+     "race": "White / Caucasian",
+     "target_proportion": 0.06905620716862153,
+     "pool_n": 129,
+     "pool_proportion": 0.06715252472670484,
+     "per_person_weight": 1.0283486354335034,
+     "realized_weighted_proportion": 0.06905620716862151,
+     "difference": -1.3877787807814457e-17
+    },
+    {
+     "gender": "Female",
+     "age_band": "45-59",
+     "race": "Asian / Asian American",
+     "target_proportion": 0.008444025332075998,
+     "pool_n": 7,
+     "pool_proportion": 0.003643935450286309,
+     "per_person_weight": 2.317281808988284,
+     "realized_weighted_proportion": 0.008444025332075996,
+     "difference": -1.734723475976807e-18
+    },
+    {
+     "gender": "Female",
+     "age_band": "45-59",
+     "race": "Black / African American",
+     "target_proportion": 0.014611043833131504,
+     "pool_n": 16,
+     "pool_proportion": 0.008328995314940135,
+     "per_person_weight": 1.7542384502153507,
+     "realized_weighted_proportion": 0.0146110438331315,
+     "difference": -3.469446951953614e-18
+    },
+    {
+     "gender": "Female",
+     "age_band": "45-59",
+     "race": "Hispanic / Latino",
+     "target_proportion": 0.0199440598321795,
+     "pool_n": 14,
+     "pool_proportion": 0.007287870900572618,
+     "per_person_weight": 2.7366099241154864,
+     "realized_weighted_proportion": 0.019944059832179492,
+     "difference": -6.938893903907228e-18
+    },
+    {
+     "gender": "Female",
+     "age_band": "45-59",
+     "race": "Other",
+     "target_proportion": 0.002944008832026497,
+     "pool_n": 10,
+     "pool_proportion": 0.0052056220718375845,
+     "per_person_weight": 0.5655440966322899,
+     "realized_weighted_proportion": 0.002944008832026496,
+     "difference": -8.673617379884035e-19
+    },
+    {
+     "gender": "Female",
+     "age_band": "45-59",
+     "race": "White / Caucasian",
+     "target_proportion": 0.06927820783462352,
+     "pool_n": 120,
+     "pool_proportion": 0.062467464862051014,
+     "per_person_weight": 1.109028643752598,
+     "realized_weighted_proportion": 0.0692782078346235,
+     "difference": -1.3877787807814457e-17
+    },
+    {
+     "gender": "Female",
+     "age_band": "60+",
+     "race": "Asian / Asian American",
+     "target_proportion": 0.009056027168081507,
+     "pool_n": 15,
+     "pool_proportion": 0.007808433107756377,
+     "per_person_weight": 1.1597752126589713,
+     "realized_weighted_proportion": 0.009056027168081505,
+     "difference": -1.734723475976807e-18
+    },
+    {
+     "gender": "Female",
+     "age_band": "60+",
+     "race": "Black / African American",
+     "target_proportion": 0.018444055332166,
+     "pool_n": 57,
+     "pool_proportion": 0.029672045809474232,
+     "per_person_weight": 0.6215970226858049,
+     "realized_weighted_proportion": 0.018444055332165997,
+     "difference": -3.469446951953614e-18
+    },
+    {
+     "gender": "Female",
+     "age_band": "60+",
+     "race": "Hispanic / Latino",
+     "target_proportion": 0.018444055332166,
+     "pool_n": 13,
+     "pool_proportion": 0.00676730869338886,
+     "per_person_weight": 2.7254638686992982,
+     "realized_weighted_proportion": 0.018444055332165997,
+     "difference": -3.469446951953614e-18
+    },
+    {
+     "gender": "Female",
+     "age_band": "60+",
+     "race": "Other",
+     "target_proportion": 0.003222009666028999,
+     "pool_n": 20,
+     "pool_proportion": 0.010411244143675169,
+     "per_person_weight": 0.30947402842208527,
+     "realized_weighted_proportion": 0.003222009666028997,
+     "difference": -1.734723475976807e-18
+    },
+    {
+     "gender": "Female",
+     "age_band": "60+",
+     "race": "White / Caucasian",
+     "target_proportion": 0.11722235166705502,
+     "pool_n": 313,
+     "pool_proportion": 0.1629359708485164,
+     "per_person_weight": 0.7194381391450884,
+     "realized_weighted_proportion": 0.11722235166705502,
+     "difference": 0.0
+    },
+    {
+     "gender": "Male",
+     "age_band": "18-29",
+     "race": "Asian / Asian American",
+     "target_proportion": 0.006556019668059005,
+     "pool_n": 15,
+     "pool_proportion": 0.007808433107756377,
+     "per_person_weight": 0.839607585489423,
+     "realized_weighted_proportion": 0.006556019668059004,
+     "difference": -1.734723475976807e-18
+    },
+    {
+     "gender": "Male",
+     "age_band": "18-29",
+     "race": "Black / African American",
+     "target_proportion": 0.0138330414991245,
+     "pool_n": 27,
+     "pool_proportion": 0.014055179593961478,
+     "per_person_weight": 0.984195285919191,
+     "realized_weighted_proportion": 0.013833041499124498,
+     "difference": -1.734723475976807e-18
+    },
+    {
+     "gender": "Male",
+     "age_band": "18-29",
+     "race": "Hispanic / Latino",
+     "target_proportion": 0.025444076332229004,
+     "pool_n": 54,
+     "pool_proportion": 0.028110359187922956,
+     "per_person_weight": 0.9051494561891094,
+     "realized_weighted_proportion": 0.025444076332228994,
+     "difference": -1.0408340855860843e-17
+    },
+    {
+     "gender": "Male",
+     "age_band": "18-29",
+     "race": "Other",
+     "target_proportion": 0.003889011667035002,
+     "pool_n": 9,
+     "pool_proportion": 0.004685059864653826,
+     "per_person_weight": 0.8300879347082486,
+     "realized_weighted_proportion": 0.003889011667035001,
+     "difference": -8.673617379884035e-19
+    },
+    {
+     "gender": "Male",
+     "age_band": "18-29",
+     "race": "White / Caucasian",
+     "target_proportion": 0.0529441588324765,
+     "pool_n": 84,
+     "pool_proportion": 0.04372722540343571,
+     "per_person_weight": 1.2107824894903254,
+     "realized_weighted_proportion": 0.052944158832476496,
+     "difference": -6.938893903907228e-18
+    },
+    {
+     "gender": "Male",
+     "age_band": "30-44",
+     "race": "Asian / Asian American",
+     "target_proportion": 0.010222030666092001,
+     "pool_n": 20,
+     "pool_proportion": 0.010411244143675169,
+     "per_person_weight": 0.9818260454781365,
+     "realized_weighted_proportion": 0.010222030666092,
+     "difference": -1.734723475976807e-18
+    },
+    {
+     "gender": "Male",
+     "age_band": "30-44",
+     "race": "Black / African American",
+     "target_proportion": 0.016278048834146505,
+     "pool_n": 37,
+     "pool_proportion": 0.019260801665799063,
+     "per_person_weight": 0.8451386975782549,
+     "realized_weighted_proportion": 0.016278048834146498,
+     "difference": -6.938893903907228e-18
+    },
+    {
+     "gender": "Male",
+     "age_band": "30-44",
+     "race": "Hispanic / Latino",
+     "target_proportion": 0.029333087999264006,
+     "pool_n": 40,
+     "pool_proportion": 0.020822488287350338,
+     "per_person_weight": 1.4087215511646536,
+     "realized_weighted_proportion": 0.029333087999264,
+     "difference": -6.938893903907228e-18
+    },
+    {
+     "gender": "Male",
+     "age_band": "30-44",
+     "race": "Other",
+     "target_proportion": 0.003889011667035002,
+     "pool_n": 19,
+     "pool_proportion": 0.00989068193649141,
+     "per_person_weight": 0.3931995480196967,
+     "realized_weighted_proportion": 0.0038890116670350005,
+     "difference": -1.3010426069826053e-18
+    },
+    {
+     "gender": "Male",
+     "age_band": "30-44",
+     "race": "White / Caucasian",
+     "target_proportion": 0.07166721500164501,
+     "pool_n": 157,
+     "pool_proportion": 0.08172826652785008,
+     "per_person_weight": 0.8768963058481531,
+     "realized_weighted_proportion": 0.07166721500164498,
+     "difference": -2.7755575615628914e-17
+    },
+    {
+     "gender": "Male",
+     "age_band": "45-59",
+     "race": "Asian / Asian American",
+     "target_proportion": 0.0076670230010690045,
+     "pool_n": 12,
+     "pool_proportion": 0.006246746486205101,
+     "per_person_weight": 1.227362598754463,
+     "realized_weighted_proportion": 0.007667023001069002,
+     "difference": -2.6020852139652106e-18
+    },
+    {
+     "gender": "Male",
+     "age_band": "45-59",
+     "race": "Black / African American",
+     "target_proportion": 0.013278039834119505,
+     "pool_n": 15,
+     "pool_proportion": 0.007808433107756377,
+     "per_person_weight": 1.700474301422904,
+     "realized_weighted_proportion": 0.013278039834119501,
+     "difference": -3.469446951953614e-18
+    },
+    {
+     "gender": "Male",
+     "age_band": "45-59",
+     "race": "Hispanic / Latino",
+     "target_proportion": 0.020389061167183507,
+     "pool_n": 4,
+     "pool_proportion": 0.002082248828735034,
+     "per_person_weight": 9.791846625539877,
+     "realized_weighted_proportion": 0.020389061167183503,
+     "difference": -3.469446951953614e-18
+    },
+    {
+     "gender": "Male",
+     "age_band": "45-59",
+     "race": "Other",
+     "target_proportion": 0.0028330084990254977,
+     "pool_n": 4,
+     "pool_proportion": 0.002082248828735034,
+     "per_person_weight": 1.360552331656995,
+     "realized_weighted_proportion": 0.002833008499025497,
+     "difference": -8.673617379884035e-19
+    },
+    {
+     "gender": "Male",
+     "age_band": "45-59",
+     "race": "White / Caucasian",
+     "target_proportion": 0.06961120883362652,
+     "pool_n": 103,
+     "pool_proportion": 0.05361790733992712,
+     "per_person_weight": 1.298282836596083,
+     "realized_weighted_proportion": 0.06961120883362655,
+     "difference": 2.7755575615628914e-17
+    },
+    {
+     "gender": "Male",
+     "age_band": "60+",
+     "race": "Asian / Asian American",
+     "target_proportion": 0.007111021333064,
+     "pool_n": 17,
+     "pool_proportion": 0.008849557522123894,
+     "per_person_weight": 0.8035454106362317,
+     "realized_weighted_proportion": 0.007111021333063998,
+     "difference": -2.6020852139652106e-18
+    },
+    {
+     "gender": "Male",
+     "age_band": "60+",
+     "race": "Black / African American",
+     "target_proportion": 0.014500043500130504,
+     "pool_n": 29,
+     "pool_proportion": 0.015096304008328995,
+     "per_person_weight": 0.9605028815086445,
+     "realized_weighted_proportion": 0.014500043500130502,
+     "difference": -1.734723475976807e-18
+    },
+    {
+     "gender": "Male",
+     "age_band": "60+",
+     "race": "Hispanic / Latino",
+     "target_proportion": 0.016278048834146505,
+     "pool_n": 12,
+     "pool_proportion": 0.006246746486205101,
+     "per_person_weight": 2.6058443175329526,
+     "realized_weighted_proportion": 0.0162780488341465,
+     "difference": -3.469446951953614e-18
+    },
+    {
+     "gender": "Male",
+     "age_band": "60+",
+     "race": "Other",
+     "target_proportion": 0.0027220081660244986,
+     "pool_n": 12,
+     "pool_proportion": 0.006246746486205101,
+     "per_person_weight": 0.43574814057775507,
+     "realized_weighted_proportion": 0.002722008166024498,
+     "difference": -4.336808689942018e-19
+    },
+    {
+     "gender": "Male",
+     "age_band": "60+",
+     "race": "White / Caucasian",
+     "target_proportion": 0.10194430583291753,
+     "pool_n": 277,
+     "pool_proportion": 0.1441957313899011,
+     "per_person_weight": 0.7069856011012078,
+     "realized_weighted_proportion": 0.1019443058329175,
+     "difference": -2.7755575615628914e-17
+    }
+   ],
+   "moderator_rule": "restrict the full clean pool to the requested one-way moderator level and renormalize the same fixed respondent weights within that subset"
+  }
  },
  "row_counts": {
   "tier2_main": 221,
   "tier2_moderator": 5967,
   "tier3": 208
- },
- "control_robustness": {
-  "trust_multidimensional": {
-   "control_panel500": 78.06625685359502,
-   "control_1000": 78.36213063950414
-  },
-  "trust_post": {
-   "control_panel500": 75.365760403972,
-   "control_1000": 75.84527974376684
-  },
-  "distrust_post": {
-   "control_panel500": 24.411529843002267,
-   "control_1000": 24.02478832032396
-  },
-  "funding_perceptions": {
-   "control_panel500": 42.15269654185641,
-   "control_1000": 42.2796907183923
-  },
-  "policy_role_mean": {
-   "control_panel500": 76.15797943581664,
-   "control_1000": 76.3343664822041
-  },
-  "inst_trust_mean": {
-   "control_panel500": 69.36668515002896,
-   "control_1000": 69.62935312827717
-  },
-  "belief_post": {
-   "control_panel500": 88.34090941544859,
-   "control_1000": 88.76160760472459
-  },
-  "concern_mean": {
-   "control_panel500": 72.8459075762212,
-   "control_1000": 73.21675385302845
-  },
-  "policy_general": {
-   "control_panel500": 75.56513797184793,
-   "control_1000": 75.85050447395068
-  },
-  "policy_specific_mean": {
-   "control_panel500": 72.31639686896156,
-   "control_1000": 72.49164927616995
-  },
-  "behavior_mean": {
-   "control_panel500": 40.66275984402028,
-   "control_1000": 40.95130422534779
-  },
-  "donation_ams": {
-   "control_panel500": 2.614200072823529,
-   "control_1000": 2.66552836682649
-  },
-  "newsletter_signup": {
-   "control_panel500": 0.01760090171423905,
-   "control_1000": 0.01741502736333485
-  }
  },
  "unsupported_moderator_cells": {
   "count": 221,
@@ -1686,8 +2094,10 @@
   "silicon_targets_raw.csv": "745421873c9570b1f3d8c1042fcecd49cea168847ccc6d1d10e4fe680a92eaf5",
   "silicon_targets_calibrated.csv": "d8a6f60f855a9b4e92e0db2167773cf0884422318276a08e7579d508e1a86db1",
   "silicon_fit_diagnostics.csv": "1ef73d25b6871b32a2f3b7b405247d834a2e4b9f0ecc3b96a15e532b786c5567",
-  "team_9_T2_secondary-1_v1_cells_main.csv": "d19f7e021945db59e0b5c20868d4abdf2fae06a7e1fef723ace1b61c12b1eef3",
-  "team_9_T2_secondary-1_v1_cells_moderator.csv": "1d70e5655dc5cf5d3253d4e269175957b8b15cf2ae8756cf0556f7e4ab14748f",
-  "team_9_T3_secondary-1_v1.csv": "68a8dba73c29a4c0d9071dc4b3a6c09b3e48bb270f9d156f596b20c6bb96f65f"
+  "team_9_T2_secondary-1_v1_cells_main.csv": "3a89a948cd4538043c8da9886a6eec441bbf469583efc9cf70d8bc89d66829e4",
+  "team_9_T2_secondary-1_v1_cells_moderator.csv": "ee1189138e7c43bcb5c8406177385612183d552c7a403195420e7ac8516d2df8",
+  "team_9_T3_secondary-1_v1.csv": "c66a2a23fa2c9159322d1feecff0afd38ba059ab802593a466fbde9118210021",
+  "poststratification_weights.csv": "6e9a0273efc31660cd5156cfd67bb22d130b652fd30bf27e72909bf748381ee4",
+  "poststratification_report.json": "d2925c9d27ac37480eedee99e98f578055c9649a83d6aeebb7df602abe44b394"
  }
 }

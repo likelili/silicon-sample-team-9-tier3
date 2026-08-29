@@ -1,0 +1,41 @@
+gender,age_band,race,proportion,pct_of_total,n_at_18000
+Male,18-29,Asian / Asian American,0.006556,0.656,118
+Male,18-29,Black / African American,0.013833,1.383,249
+Male,18-29,Hispanic / Latino,0.025444,2.544,458
+Male,18-29,Other,0.003889,0.389,70
+Male,18-29,White (non-Hispanic),0.052944,5.294,953
+Male,30-44,Asian / Asian American,0.010222,1.022,184
+Male,30-44,Black / African American,0.016278,1.628,293
+Male,30-44,Hispanic / Latino,0.029333,2.933,528
+Male,30-44,Other,0.003889,0.389,70
+Male,30-44,White (non-Hispanic),0.071667,7.167,1290
+Male,45-59,Asian / Asian American,0.007667,0.767,138
+Male,45-59,Black / African American,0.013278,1.328,239
+Male,45-59,Hispanic / Latino,0.020389,2.039,367
+Male,45-59,Other,0.002833,0.283,51
+Male,45-59,White (non-Hispanic),0.069611,6.961,1253
+Male,60+,Asian / Asian American,0.007111,0.711,128
+Male,60+,Black / African American,0.0145,1.45,261
+Male,60+,Hispanic / Latino,0.016278,1.628,293
+Male,60+,Other,0.002722,0.272,49
+Male,60+,White (non-Hispanic),0.101944,10.194,1835
+Female,18-29,Asian / Asian American,0.006833,0.683,123
+Female,18-29,Black / African American,0.0145,1.45,261
+Female,18-29,Hispanic / Latino,0.023667,2.367,426
+Female,18-29,Other,0.003889,0.389,70
+Female,18-29,White (non-Hispanic),0.050056,5.006,901
+Female,30-44,Asian / Asian American,0.010833,1.083,195
+Female,30-44,Black / African American,0.017444,1.744,314
+Female,30-44,Hispanic / Latino,0.027778,2.778,500
+Female,30-44,Other,0.003944,0.394,71
+Female,30-44,White (non-Hispanic),0.069056,6.906,1243
+Female,45-59,Asian / Asian American,0.008444,0.844,152
+Female,45-59,Black / African American,0.014611,1.461,263
+Female,45-59,Hispanic / Latino,0.019944,1.994,359
+Female,45-59,Other,0.002944,0.294,53
+Female,45-59,White (non-Hispanic),0.069278,6.928,1247
+Female,60+,Asian / Asian American,0.009056,0.906,163
+Female,60+,Black / African American,0.018444,1.844,332
+Female,60+,Hispanic / Latino,0.018444,1.844,332
+Female,60+,Other,0.003222,0.322,58
+Female,60+,White (non-Hispanic),0.117222,11.722,2110

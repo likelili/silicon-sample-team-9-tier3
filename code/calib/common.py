@@ -9,8 +9,8 @@ columns, and where results land.
 Settled design (2026-08-28):
   * fit on the FULL cleaned pool — the 1,921 twins that are structurally
     complete in every one of their 17 silicon conditions;
-  * aggregate on the stratified Tier-1 ids (panel-500 for all 17 conditions;
-    the control-1000 as a robustness read);
+  * aggregate Tier 2 and Tier 3 over the full clean pool using one fixed set of
+    40-cell gender x age x race poststratification weights;
   * calibration feeds Tier 2 / Tier 3 only — Tier 1 ships raw twin responses.
 
 Environment: ``silicon_bench/.venv-calib`` carries the authors' dependency set

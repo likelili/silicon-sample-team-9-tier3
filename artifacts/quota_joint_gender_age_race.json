@@ -1,0 +1,14 @@
+{
+ "what": "2 x 4 x 5 gender x age x race joint quota table, N=18,000",
+ "method": "iterative proportional fitting (raking) of a census-seeded table to the benchmark preregistration's two published two-way margins",
+ "margins_enforced": [
+  "gender x age (8 cells)",
+  "gender x race (10 cells)"
+ ],
+ "margin_source": "Silicon Sample Benchmark preregistration, Table 3 (2024 Census Bureau Population Estimates Program cross quotas, rescaled to N=18,000)",
+ "seed_source": "age composition within each racial group for US adults 18+, shaped to published median ages by race/ethnicity (White non-Hispanic ~44, Asian ~37.5, Black ~35, Hispanic ~30)",
+ "reconciliation": "the two published margins disagreed by one person on the gender total (8,827 male from the age table vs 8,828 from the race table). White non-Hispanic male 5,332 -> 5,331 and female 5,500 -> 5,501: the White total and every other published cell are unchanged.",
+ "verification": "both two-way margins reproduce exactly at the person level; grand total 18,000",
+ "caveat": "the age x race association is NOT determined by the published margins. It comes from the seed, so it is an informed estimate rather than a benchmark-supplied quantity. The margins are exact; the interior is modelled.",
+ "generator": "scratchpad/joint_table.py"
+}

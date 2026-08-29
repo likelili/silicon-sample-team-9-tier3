@@ -5,9 +5,9 @@ This registration documents Team 9's Tier 3 `secondary-1` submission. Items mark
 ## 0 · Approach identity and output
 
 - **0.1 Team ★:** Team 9 (ExploraTwin): Olivier Toubia, Tianyi Peng, George Gui, Yuchen Qiu, and Naveen Venkat. Affiliations and emails appear in `metadata.json`; Olivier Toubia (`ot2107@gsb.columbia.edu`) is the corresponding contact. The organizers approved this five-person team.
-- **0.2 Plain-language summary ★:** We simulated all conditions with GPT-5.6 Luna digital twins, calibrated each condition-outcome column with 123 Twin-2K Wave-4 anchors and the SYN-DIGITS elastic-net estimator, and computed each ATE as the calibrated intervention mean minus the calibrated pooled-control mean.
-- **0.3 Tier and approach family ★:** Tier 3; mean-difference treatment effects from calibrated individual digital-twin simulations.
-- **0.4 Ordered pipeline:** (1) Simulate 2,007 eligible twins in all 17 conditions. (2) Retain 1,921 twins with exactly complete sessions in every condition. (3) Construct the 13 benchmark outcomes. (4) Fit the frozen SYN-DIGITS elastic-net procedure separately for all 221 condition-outcome targets using aligned human and synthetic Twin-2K Wave-4 anchors. (5) Aggregate calibrated predictions over the frozen quota-matched 500-person panel. (6) Subtract each pooled-control mean from its corresponding intervention mean.
+- **0.2 Plain-language summary ★:** We simulated all conditions with GPT-5.6 Luna digital twins, calibrated each condition-outcome column with 123 Twin-2K Wave-4 anchors and the SYN-DIGITS elastic-net estimator, poststratified the full clean pool, and computed each ATE as the weighted intervention mean minus the weighted pooled-control mean.
+- **0.3 Tier and approach family ★:** Tier 3; mean-difference treatment effects from calibrated and poststratified individual digital-twin simulations.
+- **0.4 Ordered pipeline:** (1) Simulate 2,007 eligible twins in all 17 conditions. (2) Retain 1,921 twins with exactly complete sessions in every condition. (3) Construct the 13 benchmark outcomes. (4) Fit the frozen SYN-DIGITS elastic-net procedure separately for all 221 condition-outcome targets using aligned human and synthetic Twin-2K Wave-4 anchors. (5) Assign each clean-pool twin one fixed weight from the 40-cell gender × age × race target table and compute all weighted condition means. (6) Subtract each weighted pooled-control mean from its corresponding weighted intervention mean.
 - **0.5 Coverage ★:** 16 interventions × 13 outcomes = 208 unique, nonmissing ATEs; no control row is submitted.
 
 ## A · Scope of LLM use
@@ -35,7 +35,7 @@ This registration documents Team 9's Tier 3 `secondary-1` submission. Items mark
 
 - **D.1 Source:** Twin-2K-500, a representative panel of 2,058 U.S. respondents with more than 500 survey answers per respondent (Toubia et al. 2025). The study and Wave-4 simulations used summary personas.
 - **D.2 Verbalization:** Released narrative-summary representations were used without editing.
-- **D.3 Assignment:** Every eligible twin completed every condition. Calibration used 1,921 universally complete twins; aggregation used the same quota-matched 500-person panel in every condition. No post-simulation weights were applied.
+- **D.3 Assignment and weighting:** Every eligible twin completed every condition, and calibration used 1,921 universally complete twins. We poststratified that full pool to a 40-cell gender × age × race table reconstructed by iterative proportional fitting of a Census-seeded joint distribution to the benchmark's released gender × age and gender × race margins. The released margins are exact; the unreported age × race association is modeled. Each twin's fixed weight is reused in all conditions and outcomes.
 
 ## E · Stimulus and survey administration
 
@@ -46,12 +46,12 @@ This registration documents Team 9's Tier 3 `secondary-1` submission. Items mark
 ## F · Stochasticity and aggregation
 
 - **F.1 Runs and seeds:** One run per twin-condition combination; global seed 42. Calibration and ATE computation were deterministic.
-- **F.2 Aggregation:** For each outcome, `ATE = mean(calibrated intervention predictions for panel 500) - mean(calibrated pooled-control predictions for the same panel 500)`. This is the organizers' specified Tier 3 mean-difference estimator.
+- **F.2 Aggregation:** For each outcome, `ATE = weighted mean(calibrated intervention predictions for the clean pool) - weighted mean(calibrated pooled-control predictions for the same clean pool)`. The same respondent weights appear on both sides of each contrast. This is the organizers' specified Tier 3 mean-difference estimator.
 
 ## G · Validation and post-processing
 
 - **G.1 Human validation:** None.
-- **G.2 Parsing:** Only exactly complete sessions were used. Raw-target reconstruction matched all 117,000 Tier 1 outcome cells. The 208 ATEs equal their source Tier 2 mean differences to numerical precision.
+- **G.2 Parsing:** Only exactly complete sessions were used. Raw-target reconstruction matched all 117,000 Tier 1 outcome cells. The weighting audit recovers all 40 target-cell proportions to numerical precision; weights range from 0.309 to 9.792 and yield an effective sample size of 1,442.7. The 208 ATEs equal their source Tier 2 weighted-mean differences to numerical precision.
 - **G.3 Calibration:** Published SYN-DIGITS elastic net: regularization multiplier `0.01`, L1 ratio `0.3`, rank-5 hard-SVD donor imputation, `min_col_std = 1.0`, and 123 Wave-4 donors. Separate models were fit for all 221 condition-outcome targets. Structurally missing synthetic targets were excluded from fitting. Calibration was always applied; no adaptive gate was used because neither the Wave-4 tuning fold nor a separate MegaStudy validation supported a stable threshold. On 61 untouched Wave-4 anchors, the frozen procedure reduced normalized panel-mean absolute error by 0.259 points and subgroup RMSE by 0.600 points relative to raw DT predictions.
 
 ## H · Learning and conditioning components
@@ -72,8 +72,8 @@ This registration documents Team 9's Tier 3 `secondary-1` submission. Items mark
 
 ## K · Reproducibility and frozen artifacts
 
-- **K.1 Code and materials:** `code/calib/production.py` reproduces calibration, aggregation, and the 208 intervention-minus-control effects. The SYN-DIGITS estimator is vendored under its MIT license. The public Zenodo DOI will be added after repository release.
-- **K.2 Raw logs †:** Simulation requests and responses and the engine snapshot are escrowed at [10.5281/zenodo.22150315](https://doi.org/10.5281/zenodo.22150315). Public `artifacts/` contains aligned anchors, raw and calibrated target matrices, and fit/audit reports.
+- **K.1 Code and materials:** `code/calib/reproduce_submission.py` regenerates the 221 elastic-net calibrations from the public matrices and verifies the 208 submitted ATEs; `code/calib/poststratification.py` constructs and audits the fixed respondent weights. The original response-to-target reconstruction remains in `code/calib/production.py` and uses the escrowed run archive. The SYN-DIGITS estimator is vendored under its MIT license.
+- **K.2 Raw logs †:** Simulation requests and responses and the engine snapshot are escrowed at [10.5281/zenodo.22150315](https://doi.org/10.5281/zenodo.22150315). Public `artifacts/` contains aligned anchors, raw and calibrated target matrices, the target grid, respondent weights, and fit/weighting audit reports.
 - **K.3 Resources:** The 221 elastic-net fits used one workstation and no additional API calls.
 
 ## L · Disclosure class
