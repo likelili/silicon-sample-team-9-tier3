@@ -6,11 +6,11 @@
   "en_l1_ratio": 0.3,
   "imputation_rank": 5,
   "min_col_std": 1.0,
-  "tau": null,
+  "tau": 0.15,
   "donors": "all 123 Wave-4 anchor columns",
-  "source": "SYN-DIGITS Table 8 elastic-net settings",
-  "adaptive_gate": null,
-  "production_rule": "always calibrate"
+  "source": "SYN-DIGITS Table 8 elastic-net settings; tau from the paper's adaptive-transfer rule",
+  "adaptive_gate": "calibrated prediction when train_mse <= 0.15, otherwise the uncalibrated digital-twin response",
+  "production_rule": "published adaptive transfer"
  },
  "fit_pool": {
   "n": 1921,
@@ -2092,12 +2092,40 @@
  },
  "files": {
   "silicon_targets_raw.csv": "745421873c9570b1f3d8c1042fcecd49cea168847ccc6d1d10e4fe680a92eaf5",
-  "silicon_targets_calibrated.csv": "d8a6f60f855a9b4e92e0db2167773cf0884422318276a08e7579d508e1a86db1",
-  "silicon_fit_diagnostics.csv": "1ef73d25b6871b32a2f3b7b405247d834a2e4b9f0ecc3b96a15e532b786c5567",
-  "team_9_T2_secondary-1_v1_cells_main.csv": "3a89a948cd4538043c8da9886a6eec441bbf469583efc9cf70d8bc89d66829e4",
-  "team_9_T2_secondary-1_v1_cells_moderator.csv": "ee1189138e7c43bcb5c8406177385612183d552c7a403195420e7ac8516d2df8",
-  "team_9_T3_secondary-1_v1.csv": "c66a2a23fa2c9159322d1feecff0afd38ba059ab802593a466fbde9118210021",
+  "silicon_targets_calibrated.csv": "2156f0562f35b5f3457d791d22b29c2aff11e663f7cdc1bb6ab768f671233413",
+  "silicon_fit_diagnostics.csv": "3c8224f0232aa6f519c0ee48b27673dfcdee9e757b8444115749be32837a9b01",
+  "team_9_T3_secondary-1_v1.csv": "518948872a8c759914078980fe26bc1b9765a6c59690ae46dbf625de4f25693e",
   "poststratification_weights.csv": "6e9a0273efc31660cd5156cfd67bb22d130b652fd30bf27e72909bf748381ee4",
   "poststratification_report.json": "d2925c9d27ac37480eedee99e98f578055c9649a83d6aeebb7df602abe44b394"
+ },
+ "transfer_gate": {
+  "tau": 0.15,
+  "targets_calibrated": 68,
+  "targets_kept_raw": 153,
+  "n_targets": 221,
+  "applied_as": "post-fit column selection between the elastic-net prediction and the raw digital-twin response; no refitting",
+  "aggregation_change_vs_always_calibrate": {
+   "tier2_main": {
+    "n": 221,
+    "compared": true,
+    "mean_abs_change_vs_always_calibrate": 0.11903429843170023,
+    "max_abs_change_vs_always_calibrate": 0.5437102403518992,
+    "n_cells_changed": 153
+   },
+   "tier2_moderator": {
+    "n": 5967,
+    "compared": true,
+    "mean_abs_change_vs_always_calibrate": 0.8005712538654964,
+    "max_abs_change_vs_always_calibrate": 9.546177597694495,
+    "n_cells_changed": 4131
+   },
+   "tier3": {
+    "n": 208,
+    "compared": true,
+    "mean_abs_change_vs_always_calibrate": 0.06301138073554306,
+    "max_abs_change_vs_always_calibrate": 0.464357756461595,
+    "n_cells_changed": 145
+   }
+  }
  }
 }

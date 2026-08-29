@@ -1,4 +1,10 @@
-"""Reproduce the submitted Tier-2 and Tier-3 tables from public artifacts."""
+"""Reproduce the submitted Tier-2 and Tier-3 tables from public artifacts.
+
+Calibration follows the published SYN-DIGITS specification including its adaptive
+transfer rule: a target keeps the elastic-net prediction when the twin-side fit
+satisfies ``train_mse <= tau`` (tau = 0.15), and otherwise falls back to the
+uncalibrated digital-twin response. 68 of the 221 targets meet the threshold.
+"""
 
 from __future__ import annotations
 
@@ -75,10 +81,13 @@ def run(root: Path | None = None) -> dict:
         sc = authors.build(real, synthetic, name=f"reproduce::{condition}::{outcome}",
                            imputation_rank=SPEC["imputation_rank"],
                            min_col_std=SPEC["min_col_std"])
-        pred, _, _ = authors.predict_column(
+        pred, train_mse, _ = authors.predict_column(
             sc, len(anchor_columns), method=SPEC["method"], fit_finite_only=True,
             imputed_cache=cache, **FIT_PARAMS)
-        calibrated[:, j] = pred
+        # Published SYN-DIGITS adaptive transfer: keep the calibrated prediction
+        # only where the twin-side fit meets the threshold, otherwise fall back to
+        # the uncalibrated digital-twin response.
+        calibrated[:, j] = pred if train_mse <= SPEC["tau"] else raw[:, j]
 
     _, archived, archived_columns = _matrix(artifacts / "silicon_targets_calibrated.csv")
     matrix_error = float(np.max(np.abs(calibrated - archived)))
