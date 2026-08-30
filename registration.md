@@ -4,7 +4,7 @@ This registration documents Team 9's Tier 3 `secondary-1` submission. Items mark
 
 ## 0 · Approach identity and output
 
-- **0.1 Team ★:** Team 9 (ExploraTwin): Olivier Toubia, Tianyi Peng, George Gui, Yuchen Qiu, and Naveen Venkat. Affiliations and emails appear in `metadata.json`; Olivier Toubia (`ot2107@gsb.columbia.edu`) is the corresponding contact. The organizers approved this five-person team.
+- **0.1 Team ★:** Team 9 (ExploraTwin): Olivier Toubia, Tianyi Peng, George Gui, Yuchen Qiu, and Naveen Venkat. The organizers approved this five-person team.
 - **0.2 Plain-language summary ★:** We simulated all conditions with GPT-5.6 Luna digital twins, calibrated each condition-outcome column with 123 Twin-2K Wave-4 anchors and the SYN-DIGITS elastic-net estimator, poststratified the full clean pool, and computed each ATE as the weighted intervention mean minus the weighted pooled-control mean.
 - **0.3 Tier and approach family ★:** Tier 3; mean-difference treatment effects from calibrated and poststratified individual digital-twin simulations.
 - **0.4 Ordered pipeline:** (1) Simulate 2,007 eligible twins in all 17 conditions. (2) Retain 1,921 twins with exactly complete sessions in every condition. (3) Construct the 13 benchmark outcomes. (4) Fit the frozen SYN-DIGITS elastic-net procedure separately for all 221 condition-outcome targets using aligned human and synthetic Twin-2K Wave-4 anchors. (5) Assign each clean-pool twin one fixed weight from the 40-cell gender × age × race target table and compute all weighted condition means. (6) Subtract each weighted pooled-control mean from its corresponding weighted intervention mean.

@@ -6,31 +6,26 @@
     {
       "name": "Toubia, Olivier",
       "affiliation": "Columbia Business School",
-      "email": "ot2107@gsb.columbia.edu",
       "orcid": ""
     },
     {
       "name": "Peng, Tianyi",
       "affiliation": "Columbia Business School",
-      "email": "tianyi.peng@columbia.edu",
       "orcid": ""
     },
     {
       "name": "Gui, George",
       "affiliation": "Columbia Business School",
-      "email": "zg2467@gsb.columbia.edu",
       "orcid": ""
     },
     {
       "name": "Qiu, Yuchen",
       "affiliation": "Columbia Business School",
-      "email": "yq2411@columbia.edu",
       "orcid": ""
     },
     {
       "name": "Venkat, Naveen",
       "affiliation": "Columbia University",
-      "email": "nv2444@columbia.edu",
       "orcid": ""
     }
   ],
@@ -43,7 +38,7 @@
     "gpt-5.6-luna (OpenAI; reasoning_effort=medium)",
     "SYN-DIGITS elastic net (alpha=0.01; l1_ratio=0.3; adaptive transfer tau=0.15)"
   ],
-  "code_repository": "https://github.com/likelili/silicon-sample-team-9-tier2",
+  "code_repository": "https://github.com/likelili/silicon-sample-team-9-tier3",
   "code_doi": null,
   "disclosure_class": "B",
   "escrow_doi": "10.5281/zenodo.22150315",
