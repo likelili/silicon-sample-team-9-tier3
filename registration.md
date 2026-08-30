@@ -27,7 +27,7 @@ This registration documents Team 9's Tier 3 `secondary-1` submission. Items mark
 
 ## C · Prompts
 
-- **C.1 Exact prompts:** The exact system and user messages were generated from the supplied QSF by the frozen SurveyTwin pipeline. Full request bodies are included in the escrowed archive. Prompts were not revised in response to benchmark predictions.
+- **C.1 Exact prompts:** The system and user messages were generated from the supplied QSF by the frozen SurveyTwin pipeline. The public repository includes the QSF and prompt-construction code, while the restricted escrow preserves the individual prediction matrices and supporting reproduction materials. Prompts were not revised in response to benchmark predictions.
 - **C.2 System-wide instructions:** The model was instructed to answer as the supplied persona, follow the displayed survey instructions and response scales, and return one structured response for every requested answer unit.
 - **C.3 Prompt-design rationale:** The prompts preserve the wording, stimuli, response options, order, and logic of the supplied instrument while requiring machine-readable output that can be aligned with Qualtrics variables and validated automatically.
 
