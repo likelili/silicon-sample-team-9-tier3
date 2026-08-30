@@ -1,6 +1,6 @@
 # Team 9 — Silicon Sample Benchmark Tier 3 Submission
 
-This repository contains Team 9's `secondary-1` Tier 3 submission. Each ATE is the organizer-specified difference between the poststratified calibrated intervention mean and the corresponding poststratified pooled-control mean from Team 9's Tier 2 pipeline. Calibration uses the SYN-DIGITS elastic-net estimator with its published adaptive-transfer gate (`tau = 0.15`), which keeps the calibrated prediction for 68 of the 221 condition-outcome targets and the uncalibrated digital-twin response for the remaining 153.
+This repository contains Team 9's `secondary-1` Tier 3 submission. Each ATE is the organizer-specified difference between the demographically reweighted intervention mean and the corresponding reweighted pooled-control mean from Team 9's Tier 2 pipeline. Calibration uses the SYN-DIGITS framework of Fan et al. (2026) and its elastic-net specification with the published adaptive-transfer gate (`tau = 0.15`), which keeps the calibrated prediction for 68 of the 221 condition-outcome targets and the uncalibrated digital-twin response for the remaining 153.
 
 ## Submission file
 

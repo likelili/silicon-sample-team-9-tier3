@@ -29,14 +29,13 @@
       "orcid": ""
     }
   ],
-  "abstract": "Average treatment-effect predictions computed as intervention-minus-control differences from calibrated and 40-cell-poststratified digital-twin group means.",
+  "abstract": "Average treatment-effect predictions computed as intervention-minus-control differences from calibrated digital-twin group means reweighted to a 40-cell gender-by-age-by-race target distribution.",
   "license": "CC-BY-4.0",
   "tier": 3,
   "entry": "secondary-1",
-  "approach_family": "mean-difference treatment effects from calibrated and poststratified digital-twin group means",
+  "approach_family": "mean-difference treatment effects from calibrated and demographically reweighted digital-twin group means",
   "models": [
-    "gpt-5.6-luna (OpenAI; reasoning_effort=medium)",
-    "SYN-DIGITS elastic net (alpha=0.01; l1_ratio=0.3; adaptive transfer tau=0.15)"
+    "gpt-5.6-luna (OpenAI; reasoning_effort=medium)"
   ],
   "code_repository": "https://github.com/likelili/silicon-sample-team-9-tier3",
   "code_doi": null,

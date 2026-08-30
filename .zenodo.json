@@ -27,7 +27,7 @@
       "affiliation": "Columbia University"
     }
   ],
-  "description": "<p>Average treatment-effect predictions computed as intervention-minus-control differences from calibrated and 40-cell-poststratified Tier-2 digital-twin group means.<\/p>",
+  "description": "<p>Average treatment-effect predictions computed as intervention-minus-control differences from calibrated Tier-2 digital-twin group means reweighted to a 40-cell gender-by-age-by-race target distribution.<\/p>",
   "keywords": [
     "Silicon Sample Benchmark",
     "silicon sampling",
