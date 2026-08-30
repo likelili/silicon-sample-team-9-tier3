@@ -32,7 +32,7 @@
   "abstract": "Average treatment-effect predictions computed as intervention-minus-control differences from calibrated digital-twin group means reweighted to a 40-cell gender-by-age-by-race target distribution.",
   "license": "CC-BY-4.0",
   "tier": 3,
-  "entry": "secondary-1",
+  "entry": "secondary-2",
   "approach_family": "mean-difference treatment effects from calibrated and demographically reweighted digital-twin group means",
   "models": [
     "gpt-5.6-luna (OpenAI; reasoning_effort=medium)"
@@ -44,7 +44,7 @@
   "zenodo_doi": null,
   "prediction_files": [
     {
-      "file": "predictions/team_9_T3_secondary-1_v1.csv",
+      "file": "predictions/team_9_T3_secondary-2_v1.csv",
       "sha256": "518948872a8c759914078980fe26bc1b9765a6c59690ae46dbf625de4f25693e"
     }
   ],

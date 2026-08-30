@@ -1,6 +1,6 @@
 # Silicon Sample Benchmark — method registration form
 
-This registration documents Team 9's Tier 3 `secondary-1` submission. Items marked **★** are public; items marked **†** are available through escrow.
+This registration documents Team 9's Tier 3 `secondary-2` submission. Items marked **★** are public; items marked **†** are available through escrow.
 
 ## 0 · Approach identity and output
 
