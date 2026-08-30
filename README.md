@@ -11,4 +11,4 @@ This repository contains Team 9's `secondary-1` Tier 3 submission. Each ATE is t
 
 Run the organizers' validator with `make check`. To regenerate the elastic-net calibration and verify the submitted ATEs from the public matrices, run `PYTHONPATH=code python -m calib.reproduce_submission` in an environment with the listed scientific dependencies. The individual prediction matrices and supporting reproduction materials are available under restricted access at [Zenodo](https://doi.org/10.5281/zenodo.22168937).
 
-Authors: Olivier Toubia, Tianyi Peng, George Gui, Yuchen Qiu, and Naveen Venkat.
+Team members: Olivier Toubia, Tianyi Peng, George Gui, Yuchen Qiu, and Naveen Venkat.
